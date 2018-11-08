@@ -1,0 +1,36 @@
+<div class="jumbotron text-center" style="margin-bottom: 0;">
+    <h2>Wiki-Giphy Search</h2>
+</div>
+
+<nav class="navbar navbar-dark bg-dark">
+    <ul class="nav navbar-nav">
+        <li><a routerLink="/search-history" style="color: white;">Search History</a></li>
+    </ul>
+</nav>
+<router-outlet></router-outlet>
+
+<div class="container m-t-20 form-group">
+    Search: <input class="form-control search-fit" [(ngModel)] = "searchText"/>
+    <button class="btn btn-primary m-l-10" (click) = "searchWikiGiphy()">Submit</button>
+</div>
+
+<div class="container m-t-20">
+    <div class="row">
+        <div class="col-md-6">
+            <div *ngIf="wikiResults?.length > 0">
+                <h3>Wiki Results:</h3>
+                <ul *ngFor="let wResult of wikiResults">
+                    <li>{{wResult.title}}</li>
+                </ul>
+            </div>
+        </div>
+        <div class="col-md-6">
+            <div *ngIf="giphyResults?.length > 0">
+                <h3>Giphy Results:</h3>
+                <img class="img-fit" src="{{giphyResults}}"/>
+            </div>
+        </div>
+    </div>
+</div>
+
+
